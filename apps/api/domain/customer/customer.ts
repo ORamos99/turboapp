@@ -2,6 +2,8 @@ import {Item} from "../../item";
 import {Transaction} from "../../transaction";
 import {Person} from "../../person";
 import crypto from "node:crypto";
+import {CustomerError, FailedToAddCustomerError} from "./errors";
+import {MissingValuesError} from "../product";
 
 export class Customer  {
     person: Person;
@@ -51,7 +53,7 @@ export class Customer  {
 }
 
 
-function NewCustomer(name: string): Customer {
+export function NewCustomer(name: string): Customer {
     if (name === "") {
         throw new FailedToAddCustomerError()
     }
@@ -59,9 +61,8 @@ function NewCustomer(name: string): Customer {
     const person: Person = new Person(
         crypto.randomUUID(),
         name,
-
-
     )
+
     return new Customer(
         person,
         [],

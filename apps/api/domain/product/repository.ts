@@ -1,11 +1,11 @@
 
-import crypto, {UUID} from "node:crypto";
+import crypto from "node:crypto";
 import {Product} from "./product";
 
-interface Repository {
-    GetAll(): Product[];
-    GetByID(id: UUID): Product;
-    Add(product: Product): void;
-    Update(product: Product): void;
-    Delete(uuid: crypto.UUID): void;
+export interface Repository {
+    GetAll(): Promise<Product[]>;
+    GetByID(id: crypto.UUID): Promise<Product>;
+    Add(product: Product): Promise<void>;
+    Update(product: Product): Promise<void>;
+    Delete(uuid: crypto.UUID): Promise<void>;
 }

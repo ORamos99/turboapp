@@ -1,6 +1,7 @@
 import {randomUUID} from "node:crypto";
 import { Item } from "../../item";
 import * as crypto from "node:crypto";
+import {MissingValuesError} from "./errors";
 
 export class Product {
     item: Item;
@@ -31,7 +32,7 @@ export class Product {
 }
 
 
-function NewProduct(name: string, description: string, price: number): Product {
+export function NewProduct(name: string, description: string, price: number): Product {
     if(name === "" || description === "") {
         throw new MissingValuesError()
     }

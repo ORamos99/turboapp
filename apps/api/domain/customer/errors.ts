@@ -1,25 +1,31 @@
 // Definición de errores
-class CustomerError extends Error {
+export class CustomerError extends Error {
     constructor(message: string) {
         super(message);
         this.name = 'CustomerError';
     }
 }
 
-class CustomerNotFoundError extends CustomerError {
+export class CustomerNotFoundError extends CustomerError {
     constructor() {
         super('The customer was not found in the repository');
     }
 }
 
-class FailedToAddCustomerError extends CustomerError {
+export class FailedToAddCustomerError extends CustomerError {
     constructor() {
         super('Failed to add the customer to the repository');
     }
 }
 
-class UpdateCustomerError extends CustomerError {
+export class UpdateCustomerError extends CustomerError {
     constructor() {
         super('Failed to update the customer in the repository');
+    }
+}
+
+export class CustomerAlreadyExist extends  CustomerError {
+    constructor() {
+        super('Customer already exist in the repository');
     }
 }
